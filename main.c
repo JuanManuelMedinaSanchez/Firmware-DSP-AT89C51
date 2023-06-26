@@ -6,29 +6,28 @@ void delay(unsigned int ms)
     unsigned int i;
     while (ms--)
     {
-        for (i = 0; i < 123; i++);  // Delay loop (adjust this value based on your clock frequency)
+        for (i = 0; i < 123; i++); 
     }
 }
 
 void main()
 {
-    /* Declare Pin Directions */
-    P0DIR = 0xFF;  // Set all pins of P0 as outputs
-    P1DIR = 0x00;  // Set all pins of P1 as inputs
+    /* Pins*/
+    P0DIR = 0xFF;  // P0, outputs
+    P1DIR = 0x00;  // P1, inputs
 
-    /* Define Output States */
-    P0 = 0x00;  // Set all pins of P0 initially to low
-
+   
+    P0 = 0x00;  
     while (1)
     {
-        if (P1 & 0x02)  // Check if P1.1 is high (toggle switch is pressed)
+        if (P1 & 0x02)  
         {
-            P0 ^= 0xFF;  // Toggle all pins of P0 together (invert the values)
-            delay(100);  // Delay for 100 milliseconds
+            P0 ^= 0xFF;  
+            delay(100);  
         }
         else
         {
-            P0 = 0x00;  // Set all pins of P0 to low
+            P0 = 0x00; 
         }
     }
 }
