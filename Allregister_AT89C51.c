@@ -1,5 +1,6 @@
 /*****************************************************************************************************************************************************************************************
-                            **NOTES**
+                            **NOTES** -> AT89C51 IAR COMPILER PROGRAM FIRMWARE TEMPLATE USING INCLUDE ioAT89C51.h
+			              -> AUTH: JUAN MANUEL MEDINA -> ingenieria@prismatiklab.com
 
 Register &= ~bitmask;    // Clear specific bits
 Register |= bitmask;     // Set specific bits
@@ -30,9 +31,6 @@ These bitfields control various aspects of the timer/counters, including their m
 The TL0, TL1, TH0, and TH1 registers are the low and high byte registers for Timer/Counter 0 and Timer/Counter 1. 
 These registers store the current values of the timers/counters.
 *****************************************************************************************************************************************************************************************/
-
-#include <ioAT89C51.h>
-#include <stdio.h>
 
 #include <ioAT89C51.h>
 #include <stdio.h>
