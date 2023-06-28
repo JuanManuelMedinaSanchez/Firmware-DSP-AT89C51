@@ -30,6 +30,15 @@ The structure TMOD_bit defines the individual bitfields within the TMOD register
 These bitfields control various aspects of the timer/counters, including their modes, clock sources, and gating options.
 The TL0, TL1, TH0, and TH1 registers are the low and high byte registers for Timer/Counter 0 and Timer/Counter 1. 
 These registers store the current values of the timers/counters.
+
+**IE->Interrupt Enable Control
+	EX0->External Interrupt 0 Enable Bit.
+	ET0->Timer 0 Interrupt Enable Bit. 
+	EX1->External Interrupt 1 Enable Bit. 
+	ET1->Timer 1 Interrupt Enable Bit.
+	ES->Serial Port Interrupt Enable Bit. 
+	EA->Global Interrupt Enable Bit.
+
 *****************************************************************************************************************************************************************************************/
 
 #include <ioAT89C51.h>
@@ -64,6 +73,8 @@ void StackPointer()
 
 void main()
 {
+    IE_bit.ES = 1;  // Enable Serial Port Interrupt
+
     TMOD_bit.M00 = 0;  // Set Timer/Counter 0 to 16-bit mode
     TMOD_bit.M10 = 1;
     TMOD_bit.GATE0 = 0;  // Disable GATE0
@@ -109,3 +120,4 @@ void main()
         // Your main program logic here
     }
 }
+
