@@ -1,5 +1,6 @@
 #include <ioAT89C51.h>
 #include <stdlib.h>
+#include <math.h>
 
 // Constants
 #define ADC_RESOLUTION 10
@@ -23,7 +24,9 @@ void delay(unsigned int ms)
 float zoh(float input)
 {
     // Implement ZOH here
-    return input;
+    static float heldValue = 0.0;
+    heldValue = input;
+    return heldValue;
 }
 
 // Function to perform interpolation
@@ -44,11 +47,11 @@ unsigned int quantize(float input)
 // Function to perform sample and hold (S/H)
 float sampleAndHold(float input)
 {
+    // Implement S/H here
     static float heldValue = 0.0;
     heldValue = input;
     return heldValue;
 }
-
 void InitADC(void)
 {
     // Make necessary port pins as outputs or inputs
@@ -83,7 +86,7 @@ unsigned char ReadADC(unsigned char channel)
     delayMicroseconds(DELAY_US);
     P1 = P1 | 0x80;
     delayMicroseconds(DELAY_US);
-    P1 = P1 & 0x7F;
+    P1 = P1 & 0x7F;	
 
     for (i = 0; i < 2000; i++)
     {
@@ -129,6 +132,7 @@ void main()
 {
     unsigned int adcValue;
     float voltage;
+    float previousVoltage = 0.0;
     unsigned char channel;
 
     InitADC();
@@ -144,6 +148,7 @@ void main()
             voltage = zoh(voltage);
 
             // Perform interpolation
+            voltage = interpolate(previousVoltage, voltage, 0.5);
 
             // Delay for a certain period
             delay(SAMPLING_PERIOD);
@@ -155,6 +160,8 @@ void main()
             unsigned int quantizedValue = quantize(voltage);
 
             // Perform desired operations with the voltage value
+
+            previousVoltage = voltage;
 
             delay(1000);
         }
