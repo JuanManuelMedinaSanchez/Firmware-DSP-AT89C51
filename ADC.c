@@ -2,59 +2,59 @@
 #include <stdlib.h>
 #include <math.h>
 
-// Constants
+
 #define ADC_RESOLUTION 10
 #define VREF 5.0
 #define DELAY_US 100
 #define SAMPLING_PERIOD 100
 
-// Function to simulate delay in microseconds
+
 void delayMicroseconds(unsigned int us)
 {
-    // Implement the delay here
+
 }
 
-// Function to simulate delay in milliseconds
+
 void delay(unsigned int ms)
 {
-    // Implement the delay here
+
 }
 
-// Function to perform Zero-Order Hold (ZOH)
+
 float zoh(float input)
 {
-    // Implement ZOH here
+
     static float heldValue = 0.0;
     heldValue = input;
     return heldValue;
 }
 
-// Function to perform interpolation
+
 float interpolate(float previous, float current, float factor)
 {
-    // Implement interpolation here
+
     return previous + (current - previous) * factor;
 }
 
-// Function to perform quantization
+n
 unsigned int quantize(float input)
 {
-    // Implement quantization here
+
     unsigned int quantizedValue = (unsigned int)(input * (1 << ADC_RESOLUTION) / VREF);
     return quantizedValue;
 }
 
-// Function to perform sample and hold (S/H)
+
 float sampleAndHold(float input)
 {
-    // Implement S/H here
+
     static float heldValue = 0.0;
     heldValue = input;
     return heldValue;
 }
 void InitADC(void)
 {
-    // Make necessary port pins as outputs or inputs
+
     P0 = 0xFF;        // Assuming P0 is used for data bus
     P1 = P1 & 0x1F;   // Set P1.7 to P1.5 as outputs
     P2 = P2 & 0xFE;   // Set P2.0 as an output
