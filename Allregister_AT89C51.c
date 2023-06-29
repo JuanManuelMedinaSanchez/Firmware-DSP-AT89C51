@@ -20,16 +20,10 @@ AC,CY->Auxiliary Carry Bit
 **ACCUMULATOR & REGISTER -> ACC, R.
 
 **TCON->TCON_bit.TR0 ->Timer 0 Run Control:
-	 Start Timer 0 by setting the TR0 bit in the TCON register to 1. This enables Timer 0 and allows it to start counting.
-	 Inside the infinite while loop, we check if the TF0 bit in the TCON register is set to 1. This indicates that Timer 0 has overflowed, 
-	 meaning it has reached its maximum value and reset back to zero. If the overflow flag is set, we clear it by assigning 0 to the TF0 bit.
+	
 
 **TMOD->Timer/Counter Mode Control (TMOD) and the Timer/Counter registers (TL0, TL1, TH0, TH1) in the AT89C51 microcontroller.
-The TMOD register is used to configure the operating modes of Timer/Counter 0 and Timer/Counter 1. 
-The structure TMOD_bit defines the individual bitfields within the TMOD register, such as M00, M10, C_T0, GATE0, M01, M11, C_T1, and GATE1. 
-These bitfields control various aspects of the timer/counters, including their modes, clock sources, and gating options.
-The TL0, TL1, TH0, and TH1 registers are the low and high byte registers for Timer/Counter 0 and Timer/Counter 1. 
-These registers store the current values of the timers/counters.
+M00, M10, C_T0, GATE0, M01, M11, C_T1, and GATE1. 
 
 **IE->Interrupt Enable Control
 	EX0->External Interrupt 0 Enable Bit.
