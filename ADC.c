@@ -144,22 +144,21 @@ void main()
             adcValue = ReadADC(channel);
             voltage = (adcValue * VREF) / (1 << ADC_RESOLUTION);
 
-            // Perform Zero-Order Hold (ZOH)
+         
             voltage = zoh(voltage);
 
-            // Perform interpolation
+         
             voltage = interpolate(previousVoltage, voltage, 0.5);
 
-            // Delay for a certain period
+  
             delay(SAMPLING_PERIOD);
 
-            // Perform sample and hold (S/H)
             voltage = sampleAndHold(voltage);
 
-            // Perform quantization
+         
             unsigned int quantizedValue = quantize(voltage);
 
-            // Perform desired operations with the voltage value
+  
 
             previousVoltage = voltage;
 
